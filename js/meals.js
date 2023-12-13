@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const heightInches = parseFloat(heightInchesInput.value) || 0;
     const diet = dietSelect.value;
 
+    // Console logs for debugging
+    console.log("Goal:", goal);
+    console.log("Diet:", diet);
+
     // Calculate suggested calories and protein
     const suggestedCalories = calculateCalories(
       goal,
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Salmon/Oily Fish", image: "images/salmon.jpg" },
         { name: "Whole Eggs", image: "images/egg.jpg" },
       ],
-      "gain-weight-muscle-vegan": [
+      "gain-weight-vegan": [
         { name: "Vegan Protein Shake", image: "images/shake.jpg" },
         { name: "Tofu", image: "images/tofu.jpg" },
         { name: "Nuts/Seeds", image: "images/nuts.jpg" },
@@ -210,9 +214,13 @@ document.addEventListener("DOMContentLoaded", function () {
       ],
     };
 
-    // Get the key for the current goal and diet combination
-    const key = `${goal}-${diet}`;
-    // Get the recommended foods based on the key or an empty array if not found
+    // // Get the key for the current goal and diet combination
+    // const key = `${goal}-${diet}`;
+    // // Get the recommended foods based on the key or an empty array if not found
+    // const recommendedFoods = foods[key] || [];
+    const key = goal + "-" + diet; // Construct key
+    console.log("Key for foods:", key); // Log the key for debugging
+
     const recommendedFoods = foods[key] || [];
 
     // Display the food list
