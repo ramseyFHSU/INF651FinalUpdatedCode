@@ -1,0 +1,198 @@
+<title>FINAL</title> 
+<link rel="stylesheet" type="text/css" href="final.css"/>
+
+<h1> Fishing With Matthew Atkins </h1>
+<img src="BassClip.png" alt="My Image">
+
+
+</div>
+</div>
+
+<nav>
+<b>
+	<a href="home.html">Home</a> &nbsp;
+	<a href="services.html">Services</a> &nbsp;
+	<a href="personal.html">Personal Accolades</a> &nbsp;
+	<a href="faq.html">FAQs</a> &nbsp;
+
+</b>
+</nav>
+<h2> Services </h2>
+
+<nav>
+    <b>
+        <a href="services.html">Bass Tour Booking</a> &nbsp;
+        <a href="striper.html">Striper Tour Booking</a> &nbsp;
+        <a href="variety.html">Variety Tour Booking</a> &nbsp;
+        
+    
+    </b>
+    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Striper Tour Booking</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td:hover {
+      background-color: #e6e6e6;
+      cursor: pointer;
+    }
+
+    .selected-date {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    #booking-form {
+      margin-top: 20px;
+    }
+
+    #navigation {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Striper Tour Booking</h1>
+
+<div id="navigation">
+  <button onclick="previousMonth()">Previous Month</button>
+  <span id="current-month-year"></span>
+  <button onclick="nextMonth()">Next Month</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+  </thead>
+  <tbody id="calendar-body">
+
+  </tbody>
+</table>
+
+<form id="booking-form">
+  <label for="email">Your Email:</label>
+  <input type="email" id="email" required>
+  <button type="button" onclick="bookNow()">Book Now</button>
+</form>
+
+<script>
+  // JavaScript code for calendar functionality and booking
+  const calendarBody = document.getElementById('calendar-body');
+  const bookingForm = document.getElementById('booking-form');
+  const emailInput = document.getElementById('email');
+  const currentMonthYear = document.getElementById('current-month-year');
+  let selectedDateElement;
+  let currentDate = new Date();
+
+  function generateCalendar(month, year) {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    
+    let calendarContent = '';
+    let dayCounter = 1;
+
+    for (let i = 0; i < 6; i++) {
+      calendarContent += '<tr>';
+
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < firstDayOfMonth) {
+          calendarContent += '<td></td>';
+        } else if (dayCounter <= daysInMonth) {
+          calendarContent += `<td onclick="selectDate(this, ${dayCounter})">${dayCounter}</td>`;
+          dayCounter++;
+        } else {
+          calendarContent += '<td></td>';
+        }
+      }
+
+      calendarContent += '</tr>';
+    }
+
+    calendarBody.innerHTML = calendarContent;
+    currentMonthYear.innerText = `${getMonthName(month)} ${year}`;
+  }
+
+  function selectDate(cell, selectedDate) {
+    if (selectedDateElement) {
+      selectedDateElement.classList.remove('selected-date');
+    }
+
+    cell.classList.add('selected-date');
+    selectedDateElement = cell;
+  }
+
+  function bookNow() {
+    const selectedDate = document.querySelector('.selected-date');
+    const userEmail = emailInput.value;
+
+    if (!selectedDate || !userEmail) {
+      alert("Please select a date and enter your email.");
+      return;
+    }
+
+    const selectedDay = selectedDate.innerText;
+    const selectedMonthYear = currentMonthYear.innerText.split(' ');
+    const selectedMonth = selectedMonthYear[0];
+    const selectedYear = selectedMonthYear[1];
+    // Additional info to send confirmation email
+alert(`Booking confirmed! You will receive a confirmation email for ${selectedMonth} ${selectedDay}, ${selectedYear} shortly.`);  }
+
+  function previousMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    generateCalendar(currentDate.getMonth(), currentDate.getFullYear());
+  }
+
+  function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    generateCalendar(currentDate.getMonth(), currentDate.getFullYear());
+  }
+
+  function getMonthName(month) {
+    const months = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ];
+    return months[month];
+  }
+
+  // Generate the calendar for the current month
+  generateCalendar(currentDate.getMonth(), currentDate.getFullYear());
+</script>
+
+</body>
+<img src="striper.png" alt="Striper Example">
+  
+
+  

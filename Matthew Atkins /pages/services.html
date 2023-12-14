@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bass Tour Booking</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Fishing With Matthew Atkins</h1>
+    </header>
+
+    <nav>
+      <a href="home.html">Home</a> &nbsp;
+      <a href="services.html">Services</a> &nbsp;
+      <a href="personal.html">Personal Accolades</a> &nbsp;
+      <a href="faq.html">FAQs</a> &nbsp;
+    </nav>
+
+    <h2>Services</h2>
+
+    <nav>
+      <a href="services.html">Bass Tour Booking</a> &nbsp;
+      <a href="striper.html">Striper Tour Booking</a> &nbsp;
+      <a href="variety.html">Variety Tour Booking</a> &nbsp;
+    </nav>
+
+    <h1>Bass Tour Booking</h1>
+
+    <div id="navigation">
+      <button onclick="previousMonth()">Previous Month</button>
+      <span id="current-month-year"></span>
+      <button onclick="nextMonth()">Next Month</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body">
+        <!-- Calendar body will be filled with JavaScript -->
+      </tbody>
+    </table>
+
+    <form id="booking-form">
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" required />
+      <button type="button" onclick="bookNow()">Book Now</button>
+    </form>
+
+    <img src="/images/Largemouth_Bass.png" alt="Bass Example" />
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
